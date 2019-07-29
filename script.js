@@ -43,7 +43,16 @@ function assignNumButtonEvents() {
     }));
 }
 
-function assignOperButtonEvents () {
+function assignOperButtonEvents() {
+    const oppButtons = Array.from(document.querySelectorAll('.opp-button'));
+    oppButtons.forEach(oppButton => oppButton.addEventListener('click', () => {
+        if (prevCalcInput != '' && currentCalcInput != '') {
+            display.textContent = operate(prevCalcInput, currentCalcInput, selectedOpp);
+        } else {
+            return;
+        }
+    }));
+    oppButtons.forEach(oppButton => oppButton.addEventListener('click', moveValues));
     const clearButton = document.querySelector('#clear')
     clearButton.addEventListener('click', () => clearAll());
     const addButton = document.querySelector('#add');
@@ -56,26 +65,18 @@ function assignOperButtonEvents () {
     diviButton.addEventListener('click', () => selectedOpp = divide);
     const equalButton = document.querySelector('#equal');
     equalButton.addEventListener('click', function () {
-        if (currentCalcInput) {
+        if (currentCalcInput && prevCalcInput) {
             display.textContent = operate(prevCalcInput, currentCalcInput, selectedOpp);
             currentCalcInput = '';
         } else {
-            return;  
-        }
-    });
-    const oppButtons = Array.from(document.querySelectorAll('.opp-button'));
-    oppButtons.forEach(oppButton => oppButton.addEventListener('click', () => {
-        if (prevCalcInput != '' && currentCalcInput != '') {
-            display.textContent = operate(prevCalcInput, currentCalcInput, selectedOpp);
-        } else {
             return;
         }
-    }));
-    oppButtons.forEach(oppButton => oppButton.addEventListener('click', moveValues));
+    });
+
 }
 
 const display = document.getElementById('display');
-display.textContent = 'Hello, please press a button.'
+display.textContent = '--------'
 let prevCalcInput = '';
 let currentCalcInput = '';
 let selectedOpp;
