@@ -1,17 +1,17 @@
 const add = (num1, num2) => {
-    return +num1 + +num2;
+    return solution = +num1 + +num2;
 };
 
 const subtract = (num1, num2) => {
-    return num1 - num2;
+    return solution = num1 - num2;
 };
 
 const multiply = (num1, num2 = 1) => {
-    return num1 * num2;
+    return solution = num1 * num2;
 };
 
 const divide = (num1, num2 = 1) => {
-    return num1 / num2;
+    return solution = num1 / num2;
 };
 
 const moveValues = () => {
@@ -25,15 +25,14 @@ const moveValues = () => {
 }
 
 const operate = (num1, num2, operator) => {
-    solution = operator(num1, num2);
-    display.textContent = solution;
+    return solution = operator(num1, num2);
 };
 
 const clearAll = () => {
     prevCalcInput = '';
     currentCalcInput = '';
     solution = '';
-    display.textContent = 0;
+    display.textContent = '--------';
 }
 
 function assignNumButtonEvents() {
@@ -58,13 +57,20 @@ function assignOperButtonEvents () {
     const equalButton = document.querySelector('#equal');
     equalButton.addEventListener('click', function () {
         if (currentCalcInput) {
-            operate(prevCalcInput, currentCalcInput, selectedOpp)
+            display.textContent = operate(prevCalcInput, currentCalcInput, selectedOpp);
             currentCalcInput = '';
         } else {
             return;  
         }
     });
     const oppButtons = Array.from(document.querySelectorAll('.opp-button'));
+    oppButtons.forEach(oppButton => oppButton.addEventListener('click', () => {
+        if (prevCalcInput != '' && currentCalcInput != '') {
+            display.textContent = operate(prevCalcInput, currentCalcInput, selectedOpp);
+        } else {
+            return;
+        }
+    }));
     oppButtons.forEach(oppButton => oppButton.addEventListener('click', moveValues));
 }
 
