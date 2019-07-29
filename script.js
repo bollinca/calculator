@@ -14,16 +14,6 @@ const divide = (num1, num2 = 1) => {
     return solution = num1 / num2;
 };
 
-const moveValues = () => {
-    if (solution) {
-        prevCalcInput = solution;
-        currentCalcInput = '';
-    } else {
-        prevCalcInput = currentCalcInput;
-        currentCalcInput = '';
-    }
-}
-
 const roundDecimals = (longDecimal) => {
     if(longDecimal.toString().length > 6) {
        return longDecimal = (Math.round(longDecimal * 10000) / 10000);
@@ -38,60 +28,80 @@ const operate = (num1, num2, operator) => {
     return solution = roundDecimals(solution);
 };
 
-const clearAll = () => {
-    prevCalcInput = '';
-    currentCalcInput = '';
-    solution = '';
-    display.textContent = '--------';
-    selectedOpp = '';
+const storeInput = () => {
+    if (solution) {
+        prevNumInput = solution;
+        currentNumInput = '';
+    } else {
+        prevNumInput = currentNumInput;
+        currentNumInput = '';
+    }
 }
 
-function assignNumButtonEvents() {
+
+const clearAll = () => {
+    prevNumInput = '';
+    currentNumInput = '';
+    solution = '';
+    currentOper = '';
+    updateDisplay('--------');
+}
+
+function updateDisplay(input) {
+    displayField.textContent = input;
+};
+
+function setNumListen() {
     const numButtons = Array.from(document.querySelectorAll('.num-button'));
     numButtons.forEach(numButton => numButton.addEventListener('click', () => {
-        currentCalcInput = currentCalcInput + numButton.textContent;
-        display.textContent = currentCalcInput;
+        currentNumInput = currentNumInput + numButton.textContent;
+        updateDisplay(currentNumInput);
     }));
 }
 
-function assignOperButtonEvents() {
+function setOperListen() {
     const oppButtons = Array.from(document.querySelectorAll('.opp-button'));
     oppButtons.forEach(oppButton => oppButton.addEventListener('click', () => {
-        if (prevCalcInput != '' && currentCalcInput != '') {
-            display.textContent = operate(prevCalcInput, currentCalcInput, selectedOpp);
+        if (prevNumInput != '' && currentNumInput != '') {
+            updateDisplay(operate(prevNumInput, currentNumInput, currentOper));
         } else {
             return;
         }
     }));
-    oppButtons.forEach(oppButton => oppButton.addEventListener('click', moveValues));
+    oppButtons.forEach(oppButton => oppButton.addEventListener('click', storeInput));    
+
+    const addButton = document.querySelector('#add');
+    addButton.addEventListener('click', () => currentOper = add);
+    const subButton = document.querySelector('#sub');
+    subButton.addEventListener('click', () => currentOper = subtract);
+    const multButton = document.querySelector('#mult');
+    multButton.addEventListener('click', () => currentOper = multiply);
+    const diviButton = document.querySelector('#divi');
+    diviButton.addEventListener('click', () => currentOper = divide);
+}
+
+function setMiscListen() {
     const clearButton = document.querySelector('#clear')
     clearButton.addEventListener('click', () => clearAll());
-    const addButton = document.querySelector('#add');
-    addButton.addEventListener('click', () => selectedOpp = add);
-    const subButton = document.querySelector('#sub');
-    subButton.addEventListener('click', () => selectedOpp = subtract);
-    const multButton = document.querySelector('#mult');
-    multButton.addEventListener('click', () => selectedOpp = multiply);
-    const diviButton = document.querySelector('#divi');
-    diviButton.addEventListener('click', () => selectedOpp = divide);
     const equalButton = document.querySelector('#equal');
     equalButton.addEventListener('click', function () {
-        if (currentCalcInput && prevCalcInput) {
-            display.textContent = operate(prevCalcInput, currentCalcInput, selectedOpp);
-            currentCalcInput = '';
+        if (currentNumInput && prevNumInput) {
+            updateDisplay(operate(prevNumInput, currentNumInput, currentOper));
+            currentNumInput = '';
         } else {
             return;
         }
     });
-
 }
 
-const display = document.getElementById('display');
-display.textContent = '--------'
-let prevCalcInput = '';
-let currentCalcInput = '';
-let selectedOpp;
-let solution;
+let prevNumInput = '';
+let currentNumInput = '';
+let solution = '';
+let currentOper = '';
 
-assignNumButtonEvents();
-assignOperButtonEvents();
+const displayField = document.getElementById('display');
+updateDisplay('--------');
+
+setNumListen();
+setOperListen();
+setMiscListen();
