@@ -24,8 +24,18 @@ const moveValues = () => {
     }
 }
 
+const roundDecimals = (longDecimal) => {
+    if(longDecimal.toString().length > 6) {
+       return longDecimal = (Math.round(longDecimal * 10000) / 10000);
+    } 
+    else {
+        return longDecimal 
+    }
+}
+
 const operate = (num1, num2, operator) => {
-    return solution = operator(num1, num2);
+    solution = operator(num1, num2);
+    return solution = roundDecimals(solution);
 };
 
 const clearAll = () => {
@@ -33,6 +43,7 @@ const clearAll = () => {
     currentCalcInput = '';
     solution = '';
     display.textContent = '--------';
+    selectedOpp = '';
 }
 
 function assignNumButtonEvents() {
