@@ -115,7 +115,6 @@ function setOperListen() {
 function activateButton(e) {
     const keyboardInput = document.querySelector(`button[data-key='${e.key}']`);
     if (keyboardInput) {
-        console.log(keyboardInput);
         e.preventDefault();
         keyboardInput.click();
     }
