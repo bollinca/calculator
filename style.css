@@ -29,9 +29,10 @@ main {
     text-align: center;
     margin: 0 auto;
     border: 2px groove black;
-    padding: 15px 0;
+    padding: 15px 20px;
     border-radius: 20px;
     line-height: 50px;
+    overflow: auto hidden;
 }
 
 #button-grid {

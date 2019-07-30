@@ -102,6 +102,15 @@ function setOperListen() {
     diviButton.addEventListener('click', () => currentOper = divide);
 }
 
+function activateButton(e) {
+    const keyboardInput = document.querySelector(`button[data-key='${e.key}']`);
+    if(keyboardInput) {
+        console.log(keyboardInput);
+        e.preventDefault();
+        keyboardInput.click();
+    }
+}
+
 function setMiscListen() {
     const clearButton = document.querySelector('#clear');
     clearButton.addEventListener('click', () => clearAll());
@@ -125,7 +134,9 @@ let currentOper = '';
 
 const displayField = document.getElementById('display');
 updateDisplay('--------');
-    
+
+
+window.addEventListener('keypress', activateButton);
 setNumListen();
 setOperListen();
 setMiscListen();
