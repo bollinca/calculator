@@ -13,8 +13,7 @@ const multiply = (num1, num2 = 1) => {
 const divide = (num1, num2 = 1) => {
     if (num2 == 0) {
         clearAll();
-        updateDisplay('You can\'t divide by zero.')
-        return;
+        return; 
     } else {
         return solution = num1 / num2;
     }
@@ -30,8 +29,12 @@ const roundDecimals = (longDecimal) => {
 }
 
 const operate = (num1, num2, operator) => {
-    solution = operator(num1, num2);
-    return solution = roundDecimals(solution);
+    if(operator === divide && num2 === '0') {
+        return ('Can\'t divide by zero.');
+    } else {
+        solution = operator(num1, num2);
+        return solution = roundDecimals(solution);
+    }
 };
 
 function removeOneCharacter(value) {
@@ -43,7 +46,7 @@ function removeOneCharacter(value) {
 }
 
 const useBackspace = () => {
-    if (currentNumInput != '') {
+    if (currentNumInput !== '') {
         return currentNumInput = removeOneCharacter(currentNumInput);
     } else if (solution) {
         solution = solution.toString();
@@ -52,7 +55,7 @@ const useBackspace = () => {
 }
 
 const storeInput = () => {
-    if (solution) {
+    if (solution || solution === 0) {
         prevNumInput = solution;
         currentNumInput = '';
     } else {
@@ -81,7 +84,7 @@ function setNumListen() {
     }));
     const decButton = document.querySelector('#dec-button');
     decButton.addEventListener('click', () => {
-        if (currentNumInput.includes('.') != true) {
+        if (currentNumInput.includes('.') !== true) {
             currentNumInput = currentNumInput + decButton.textContent;
             updateDisplay(currentNumInput);
         }
@@ -91,7 +94,7 @@ function setNumListen() {
 function setOperListen() {
     const oppButtons = Array.from(document.querySelectorAll('.opp-button'));
     oppButtons.forEach(oppButton => oppButton.addEventListener('click', () => {
-        if (prevNumInput != '' && currentNumInput != '') {
+        if (prevNumInput !== '' && currentNumInput !== '') {
             updateDisplay(operate(prevNumInput, currentNumInput, currentOper));
         } else {
             return;
@@ -123,7 +126,7 @@ function setMiscListen() {
     clearButton.addEventListener('click', () => clearAll());
     const equalButton = document.querySelector('#equal');
     equalButton.addEventListener('click', function () {
-        if (currentNumInput && prevNumInput) {
+        if (currentNumInput !== '' && prevNumInput !== '') {
             updateDisplay(operate(prevNumInput, currentNumInput, currentOper));
             storeInput();
         } else {
