@@ -21,11 +21,11 @@ const divide = (num1, num2 = 1) => {
 };
 
 const roundDecimals = (longDecimal) => {
-    if(longDecimal.toString().length > 6) {
-       return longDecimal = (Math.round(longDecimal * 10000) / 10000);
-    } 
+    if (longDecimal.toString().length > 6) {
+        return longDecimal = (Math.round(longDecimal * 10000) / 10000);
+    }
     else {
-        return longDecimal 
+        return longDecimal
     }
 }
 
@@ -34,13 +34,20 @@ const operate = (num1, num2, operator) => {
     return solution = roundDecimals(solution);
 };
 
+function removeOneCharacter(value) {
+    backspaceArray = Array.from(value);
+        backspaceArray.pop();
+        value = backspaceArray.join('');
+        updateDisplay(value);
+        return value;
+}
+
 const useBackspace = () => {
-    if (currentNumInput) {
-    backspaceArray = Array.from(currentNumInput);
-    backspaceArray.pop();
-    currentNumInput = backspaceArray.join('');
-    updateDisplay(currentNumInput);
-    return currentNumInput;
+    if (currentNumInput != '') {
+        return currentNumInput = removeOneCharacter(currentNumInput);
+    } else if (solution) {
+        solution = solution.toString();
+        return solution = removeOneCharacter(solution);
     }
 }
 
@@ -70,7 +77,7 @@ function setNumListen() {
     const numButtons = Array.from(document.querySelectorAll('.num-button'));
     numButtons.forEach(numButton => numButton.addEventListener('click', () => {
         currentNumInput = currentNumInput + numButton.textContent;
-        updateDisplay(currentNumInput);  
+        updateDisplay(currentNumInput);
     }));
     const decButton = document.querySelector('#dec-button');
     decButton.addEventListener('click', () => {
@@ -90,7 +97,7 @@ function setOperListen() {
             return;
         }
     }));
-    oppButtons.forEach(oppButton => oppButton.addEventListener('click', storeInput));    
+    oppButtons.forEach(oppButton => oppButton.addEventListener('click', storeInput));
 
     const addButton = document.querySelector('#add');
     addButton.addEventListener('click', () => currentOper = add);
@@ -104,7 +111,7 @@ function setOperListen() {
 
 function activateButton(e) {
     const keyboardInput = document.querySelector(`button[data-key='${e.key}']`);
-    if(keyboardInput) {
+    if (keyboardInput) {
         console.log(keyboardInput);
         e.preventDefault();
         keyboardInput.click();
@@ -136,7 +143,7 @@ const displayField = document.getElementById('display');
 updateDisplay('--------');
 
 
-window.addEventListener('keypress', activateButton);
+window.addEventListener('keydown', activateButton);
 setNumListen();
 setOperListen();
 setMiscListen();

@@ -2,33 +2,38 @@
 <html>
 
 <head>
+    <title>Simple Calculator</title>
     <link type='text/css' rel='stylesheet' href='style.css'>
 </head>
 
 <body>
     <main>
-        <div id=button-grid>
-            <div id='display'>
-            </div>
-            <button data-key='0' class='num-button' id='button0'>0</button>
-            <button data-key='1' class='num-button' id='button1'>1</button>
-            <button data-key='2' class='num-button' id='button2'>2</button>
-            <button data-key='3' class='num-button' id='button3'>3</button>
-            <button data-key='4' class='num-button' id='button4'>4</button>
-            <button data-key='5' class='num-button' id='button5'>5</button>
-            <button data-key='6' class='num-button' id='button6'>6</button>
-            <button data-key='7' class='num-button' id='button7'>7</button>
-            <button data-key='8' class='num-button' id='button8'>8</button>
-            <button data-key='9' class='num-button' id='button9'>9</button>
-            <button data-key='.' id='dec-button'>.</button>
+        <h1>Simple Calculator</h1>
+        <div id=calc-container>
+            <div id=button-grid>
+                <div id='display'>
+                </div>
+                <button data-key='0' class='num-button' id='button0'>0</button>
+                <button data-key='1' class='num-button' id='button1'>1</button>
+                <button data-key='2' class='num-button' id='button2'>2</button>
+                <button data-key='3' class='num-button' id='button3'>3</button>
+                <button data-key='4' class='num-button' id='button4'>4</button>
+                <button data-key='5' class='num-button' id='button5'>5</button>
+                <button data-key='6' class='num-button' id='button6'>6</button>
+                <button data-key='7' class='num-button' id='button7'>7</button>
+                <button data-key='8' class='num-button' id='button8'>8</button>
+                <button data-key='9' class='num-button' id='button9'>9</button>
+                <button data-key='.' id='dec-button'>.</button>
 
-            <button data-key='*'class='opp-button' id='mult'>*</button>
-            <button data-key='+'class='opp-button' id='add'>+</button>
-            <button data-key='-'class='opp-button' id='sub'>-</button>
-            <button data-key='/'class='opp-button' id='divi'>/</button>
-            <button data-key='Enter' id='equal'>=</button>
-            <button data-key='Delete' id='clear'>C</button>
-            <button id='backspace'>&lt;--</button>
+                <button data-key='*' class='opp-button' id='mult'>*</button>
+                <button data-key='+' class='opp-button' id='add'>+</button>
+                <button data-key='-' class='opp-button' id='sub'>-</button>
+                <button data-key='/' class='opp-button' id='divi'>/</button>
+                <button data-key='Enter' id='equal'>=</button>
+                <button data-key='Delete' id='clear'>C</button>
+                <button data-key='Backspace' id='backspace'>&lt;--</button>
+            </div>
+        </div>
         </div>
     </main>
 </body>
