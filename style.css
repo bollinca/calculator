@@ -4,6 +4,7 @@
 
 body {
     background-color: rgba(117, 117, 117, 0.37);
+    font-size: 30px;
 }
 
 main {
@@ -16,7 +17,7 @@ main {
 }
 
 #display {
-    height: 50px;
+    height: 80px;
     width: 100%;
     grid-area: disp;
     background-color:rgb(117, 117, 117);
@@ -25,29 +26,32 @@ main {
     margin: 0 auto;
     border: 2px groove black;
     padding: 15px 0;
+    border-radius: 20px;
+    line-height: 50px;
 }
 
 #button-grid {
-    padding: 15px;
+    padding: 30px 20px;
     display: grid;
     grid-template-areas: 'disp disp disp disp'
                          'seven eight nine addReg'
                          'four five six subReg'
                          'one two three mult'
                          'zip zip zip divi'
-                         'clear clear clear equal';
-    grid-template-rows: repeat(6, 50px);
-    grid-template-columns:repeat(4, 50px);
+                         'equal equal equal clear';
+    grid-template-rows: repeat(6, 80px);
+    grid-template-columns:repeat(4, 80px);
     grid-gap: 5px;
     background-color: rgb(3, 9, 54);
-    border-radius: 15px;
+    border-radius: 20px;
     box-shadow: 10px 10px 10px rgb(117, 117, 117);
 }
 
 button {
     background-color: rgb(117, 117, 117);
     color: white;
-    border-radius: 10px;
+    border-radius: 20px;
+    font-size: 30px;
 }
 
 #add {
