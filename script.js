@@ -70,8 +70,15 @@ function setNumListen() {
     const numButtons = Array.from(document.querySelectorAll('.num-button'));
     numButtons.forEach(numButton => numButton.addEventListener('click', () => {
         currentNumInput = currentNumInput + numButton.textContent;
-        updateDisplay(currentNumInput);
+        updateDisplay(currentNumInput);  
     }));
+    const decButton = document.querySelector('#dec-button');
+    decButton.addEventListener('click', () => {
+        if (currentNumInput.includes('.') != true) {
+            currentNumInput = currentNumInput + decButton.textContent;
+            updateDisplay(currentNumInput);
+        }
+    });
 }
 
 function setOperListen() {
