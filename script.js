@@ -34,6 +34,16 @@ const operate = (num1, num2, operator) => {
     return solution = roundDecimals(solution);
 };
 
+const useBackspace = () => {
+    if (currentNumInput) {
+    backspaceArray = Array.from(currentNumInput);
+    backspaceArray.pop();
+    currentNumInput = backspaceArray.join('');
+    updateDisplay(currentNumInput);
+    return currentNumInput;
+    }
+}
+
 const storeInput = () => {
     if (solution) {
         prevNumInput = solution;
@@ -86,7 +96,7 @@ function setOperListen() {
 }
 
 function setMiscListen() {
-    const clearButton = document.querySelector('#clear')
+    const clearButton = document.querySelector('#clear');
     clearButton.addEventListener('click', () => clearAll());
     const equalButton = document.querySelector('#equal');
     equalButton.addEventListener('click', function () {
@@ -97,6 +107,8 @@ function setMiscListen() {
             return;
         }
     });
+    const backspaceButton = document.querySelector('#backspace');
+    backspaceButton.addEventListener('click', () => useBackspace());
 }
 
 let prevNumInput = '';
@@ -106,7 +118,7 @@ let currentOper = '';
 
 const displayField = document.getElementById('display');
 updateDisplay('--------');
-
+    
 setNumListen();
 setOperListen();
 setMiscListen();

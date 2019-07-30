@@ -16,6 +16,10 @@ main {
     margin-top: 10vh;
 }
 
+.opp-button, #clear, #equal, #backspace {
+    background-color: rgba(0, 0, 0, 0.534);
+}
+
 #display {
     height: 80px;
     width: 100%;
@@ -37,7 +41,7 @@ main {
                          'seven eight nine addReg'
                          'four five six subReg'
                          'one two three mult'
-                         'zip zip zip divi'
+                         'zip dec backspace divi'
                          'equal equal equal clear';
     grid-template-rows: repeat(6, 80px);
     grid-template-columns:repeat(4, 80px);
@@ -76,6 +80,10 @@ button {
 
 #equal {
     grid-area: equal;
+}
+
+#backspace {
+    grid-area: backspace;
 }
 
 #button0 {
@@ -118,5 +126,7 @@ button {
     grid-area: nine;
 }
 
-
+#button-dec {
+    grid-area: dec;
+}
 
