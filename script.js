@@ -11,7 +11,13 @@ const multiply = (num1, num2 = 1) => {
 };
 
 const divide = (num1, num2 = 1) => {
-    return solution = num1 / num2;
+    if (num2 == 0) {
+        clearAll();
+        updateDisplay('You can\'t divide by zero.')
+        return;
+    } else {
+        return solution = num1 / num2;
+    }
 };
 
 const roundDecimals = (longDecimal) => {
@@ -37,7 +43,6 @@ const storeInput = () => {
         currentNumInput = '';
     }
 }
-
 
 const clearAll = () => {
     prevNumInput = '';
