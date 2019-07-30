@@ -2,18 +2,117 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: rgba(117, 117, 117, 0.37);
+}
+
+main {
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-top: 10vh;
+}
+
 #display {
-    width: 500px;
     height: 50px;
-    background-color: blanchedalmond;
-    color: black;
+    width: 100%;
+    grid-area: disp;
+    background-color:rgb(117, 117, 117);
+    color: white;
     text-align: center;
     margin: 0 auto;
     border: 2px groove black;
     padding: 15px 0;
 }
 
-#button-container {
-    text-align: center;
+#button-grid {
     padding: 15px;
+    display: grid;
+    grid-template-areas: 'disp disp disp disp'
+                         'seven eight nine addReg'
+                         'four five six subReg'
+                         'one two three mult'
+                         'zip zip zip divi'
+                         'clear clear clear equal';
+    grid-template-rows: repeat(6, 50px);
+    grid-template-columns:repeat(4, 50px);
+    grid-gap: 5px;
+    background-color: rgb(3, 9, 54);
+    border-radius: 15px;
+    box-shadow: 10px 10px 10px rgb(117, 117, 117);
 }
+
+button {
+    background-color: rgb(117, 117, 117);
+    color: white;
+    border-radius: 10px;
+}
+
+#add {
+    grid-area: addReg;
+}
+
+#sub {
+    grid-area: subReg;
+}
+
+#mult {
+    grid-area: mult;
+}
+
+#divi {
+    grid-area: divi;
+}
+
+#clear {
+    grid-area: clear;
+}
+
+#equal {
+    grid-area: equal;
+}
+
+#button0 {
+    grid-area: zip;
+}
+
+#button1 {
+    grid-area: one;
+}
+
+#button2 {
+    grid-area: two;
+}
+
+#button3 {
+    grid-area: three;
+}
+
+#button4 {
+    grid-area: four;
+}
+
+#button5 {
+    grid-area: five;
+}
+
+#button6 {
+    grid-area: six;
+}
+
+#button7 {
+    grid-area: seven;
+}
+
+#button8 {
+    grid-area: eight;
+}
+
+#button9 {
+    grid-area: nine;
+}
+
+
+
