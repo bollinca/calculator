@@ -125,7 +125,7 @@ function setMiscListen() {
     equalButton.addEventListener('click', function () {
         if (currentNumInput && prevNumInput) {
             updateDisplay(operate(prevNumInput, currentNumInput, currentOper));
-            currentNumInput = '';
+            storeInput();
         } else {
             return;
         }
